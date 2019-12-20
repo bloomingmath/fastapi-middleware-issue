@@ -79,6 +79,3 @@ E       AssertionError
 venv/lib/python3.7/site-packages/starlette/middleware/base.py:47: AssertionError
 ============================================================================== 1 failed in 0.39s ===============================================================================
 ```
-
-## A way to bypass the problem
-In branch _podhmo_ there is a way to perform the tests without incurring in the error, proposed [here](https://github.com/tiangolo/fastapi/issues/806#issuecomment-567913676).
