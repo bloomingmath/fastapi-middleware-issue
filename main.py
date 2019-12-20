@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from starlette.requests import Request
 from starlette.templating import Jinja2Templates
 from starlette.testclient import TestClient
+import pytest
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -22,6 +23,10 @@ def read_root(request: Request):
 
 client = TestClient(app)
 
-def test_middleware():
-    response = client.get("/")
-    assert "X-Process-Time" in response.headers
+@pytest.mark.asyncio
+async def test_middleware():
+    from async_asgi_testclient import TestClient
+
+    async with TestClient(app) as client:
+        response = await client.get("/")
+        assert "X-Process-Time" in response.headers

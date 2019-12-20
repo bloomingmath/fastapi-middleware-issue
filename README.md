@@ -1,4 +1,10 @@
 # fastapi-middlware-issue
+It looks like there is a problem with starlette.TestClient, Jinja2Templates and BasicHTTPMiddleware working in conjunction.
+
+### A way to bypass the problem
+In branch _podhmo_ there is a way to perform the tests without incurring in the error, proposed [here](https://github.com/tiangolo/fastapi/issues/806#issuecomment-567913676).
+
+### A way to produce the error
 I tried to make the minimal configuration to reproduce an error I get. It happens only on testing with pytest, when a middleware intercepts a template response. I see it is a rather specific problem... but it prevents me from testing my application.
 
 This is the output of `pytest main.py`:
@@ -73,3 +79,6 @@ E       AssertionError
 venv/lib/python3.7/site-packages/starlette/middleware/base.py:47: AssertionError
 ============================================================================== 1 failed in 0.39s ===============================================================================
 ```
+
+## A way to bypass the problem
+In branch _podhmo_ there is a way to perform the tests without incurring in the error, proposed [here](https://github.com/tiangolo/fastapi/issues/806#issuecomment-567913676).
